@@ -34,14 +34,6 @@ public class GameManager implements ServerInterface {
 		}
 	}
 
-	public Server getServer() {
-		return server;
-	}
-
-	public void setServer(Server server) {
-		this.server = server;
-	}
-
 	@Override
 	public void createRoom(Player player, String roomName) {
 		boolean doesExist = false;
@@ -68,8 +60,26 @@ public class GameManager implements ServerInterface {
 
 	@Override
 	public void joinRoom(Player player, String roomName) {
-		// TODO Auto-generated method stub
+		boolean doesExist = false;
+		for(Group g : groups){
+			if(g.getName().toLowerCase().equals(roomName.toLowerCase())){
+				doesExist = true;
+			}
+		}
 		
+		if(doesExist == true){
+			server.sendData(new Packet15RoomFailed("room already exists").getData(), 
+					player.ip, player.port);
+		}else{
+			Group newGroup = new Group(roomName);
+			groups.add(newGroup);
+			groupMap.put(player.ip, newGroup);
+			
+			System.out.println("Group " + roomName + " has bee created by " + player.userName);
+			
+			server.sendData(new Packet14RoomCreated(roomName).getData(), 
+					player.ip, player.port);
+		}
 	}
 
 	@Override
@@ -92,6 +102,14 @@ public class GameManager implements ServerInterface {
 
 	public HashMap<InetAddress, Player> getPlayerMap() {
 		return playerMap;
+	}
+	
+	public Server getServer() {
+		return server;
+	}
+
+	public void setServer(Server server) {
+		this.server = server;
 	}
 	
 	

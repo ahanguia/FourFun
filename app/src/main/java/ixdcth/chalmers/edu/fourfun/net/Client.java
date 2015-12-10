@@ -12,6 +12,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
+import ixdcth.chalmers.edu.fourfun.net.interfaces.CreateJoinInterface;
 import ixdcth.chalmers.edu.fourfun.net.packet.*;
 
 public class Client implements Runnable{
@@ -37,7 +38,9 @@ public class Client implements Runnable{
 	private String userName;
 	
 	private ClientInterface clientInterface;
-	
+
+	private static CreateJoinInterface createJoin;
+
 	public Client(String userName, String ip, int port, ClientInterface cientInterface){
 		this.userName = userName;
 		this.port = port;
@@ -160,7 +163,7 @@ public class Client implements Runnable{
 		System.out.println("ACCEPTED BY SERVER");
 		connected=true;
 		
-		clientInterface.loginAccept();
+		createJoin.loginAccept();
 	}
 	
 	private void handleLoginFailed(Packet packet, InetAddress address, int port){
@@ -168,23 +171,23 @@ public class Client implements Runnable{
 		
 		Packet12LoginFailed p = (Packet12LoginFailed) packet;
 		connected=true;
-		clientInterface.loginFailed(p.getReason());
+		createJoin.loginFailed(p.getReason());
 	}
 	
 	private void handleRoomCreated(Packet packet, InetAddress address, int port){
 		System.out.println("ROOM HAS BEEN CREATED BY SERVER");
 		
 		Packet14RoomCreated p = (Packet14RoomCreated) packet;
-		
-		clientInterface.roomCreated();
+
+		createJoin.roomCreated();
 	}
 	
 	private void handleRoomFailed(Packet packet, InetAddress address, int port){
 		System.out.println("FAILED ROOM CREATION BY SERVER");
 		
 		Packet15RoomFailed p = (Packet15RoomFailed) packet;
-		
-		clientInterface.roomFailed(p.getReason());
+
+		createJoin.roomFailed(p.getReason());
 	}
 	
 	public void sendData(byte[] data){
@@ -200,6 +203,10 @@ public class Client implements Runnable{
 
 	public String getUserName() {
 		return userName;
+	}
+
+	public static void setCreateJoinInterface(CreateJoinInterface cji){
+		createJoin = cji;
 	}
 
 }

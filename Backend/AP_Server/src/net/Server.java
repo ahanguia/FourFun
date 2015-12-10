@@ -12,9 +12,7 @@ import game.GameManager;
 import game.Group;
 import game.Player;
 import net.packet.Packet;
-import net.packet.Packet10Login;
-import net.packet.Packet11LoginAccept;
-import net.packet.Packet13CreateRoom;
+import net.packet.*;
 
 public class Server implements Runnable{
 	
@@ -101,6 +99,10 @@ public class Server implements Runnable{
 				packet = new Packet13CreateRoom(data);
 				handleCreateRoom((Packet13CreateRoom) packet, address, port);
 				break;
+			case JOINROOM:
+				packet = new Packet16JoinRoom(data);
+				handleJoinRoom((Packet16JoinRoom) packet, address, port);
+				break;
 			default:
 				break;
 		}
@@ -129,6 +131,13 @@ public class Server implements Runnable{
 		
 		String name = packet.getRoomName();
 		gm.createRoom(gm.getPlayerMap().get(address), name);
+	}
+	
+	private void handleJoinRoom(Packet16JoinRoom packet, InetAddress address, int port){
+		System.out.println("[" + address.getHostAddress() + ":" + port + "] " + packet.getRoomName() + " join room requested");
+		
+		String name = packet.getRoomName();
+		gm.joinRoom(gm.getPlayerMap().get(address), name);
 	}
 
 	public void sendData(byte[] data, InetAddress ip, int port){

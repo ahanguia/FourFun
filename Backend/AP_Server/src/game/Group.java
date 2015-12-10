@@ -8,6 +8,10 @@ public class Group {
 	
 	private ArrayList<Player> players = new ArrayList<Player>();
 
+	public boolean tryAddNewPlayer(Player player){
+		return false;
+	}
+	
 	public Group(String name){
 		this.name = name;
 	}

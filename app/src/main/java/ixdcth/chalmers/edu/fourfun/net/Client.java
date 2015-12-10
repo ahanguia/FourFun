@@ -19,6 +19,7 @@ public class Client implements Runnable{
 	private InetAddress ip;
 	private DatagramSocket socket;
 	private Thread thread;
+	private String ipString;
 	
 	private int port;
 	private int packetNumber = 0;
@@ -41,23 +42,14 @@ public class Client implements Runnable{
 		this.userName = userName;
 		this.port = port;
 		this.clientInterface = cientInterface;
-		
-		try {
-			this.ip = InetAddress.getByName(ip);
-			socket = new DatagramSocket();
-		} catch (SocketException e) {
-			e.printStackTrace();
-		} catch (UnknownHostException e) {
-			e.printStackTrace();
-		}
+		this.ipString=ip;
 	}
 	
 	public synchronized void start(){
 		running = true;
 		thread = new Thread(this, "client-thread");
 		thread.start();
-		loginPacket = new Packet10Login(userName);
-		sendData(loginPacket.getData());
+
 	}
 	
 	public synchronized void stop(){
@@ -71,6 +63,16 @@ public class Client implements Runnable{
 
 	@Override
 	public void run() {
+		try {
+			this.ip = InetAddress.getByName(ipString);
+			socket = new DatagramSocket();
+		} catch (SocketException e) {
+			e.printStackTrace();
+		} catch (UnknownHostException e) {
+			e.printStackTrace();
+		}
+		loginPacket = new Packet10Login(userName);
+		sendData(loginPacket.getData());
 		while(!connected){
 			loginPacket = new Packet10Login(userName);
 			sendData(loginPacket.getData());

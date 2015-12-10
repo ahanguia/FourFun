@@ -42,8 +42,6 @@ public class GameManager implements ServerInterface {
 			playerMap.put(player.ip, player);
 		}
 		
-		
-		
 		boolean doesExist = false;
 		for(Group g : groups){
 			if(g.getName().toLowerCase().equals(roomName.toLowerCase())){
@@ -79,7 +77,11 @@ public class GameManager implements ServerInterface {
 		}
 		
 		if(doesExist == true){
-			
+			if(toJoin.tryAddNewPlayer(player)){
+				server.sendData(new Packet17RoomJoined(roomName).getData(), 
+						player.ip, player.port);
+				groupMap.put(player.ip, toJoin);
+			}
 		}else{
 			Group newGroup = new Group(roomName);
 			groups.add(newGroup);

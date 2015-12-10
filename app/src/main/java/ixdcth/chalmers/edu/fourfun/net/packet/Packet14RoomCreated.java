@@ -32,5 +32,9 @@ public class Packet14RoomCreated extends Packet{
 
     }
 
+    public String getColor(){
+        return hexColor;
+    }
+
 
 }

@@ -1,6 +1,6 @@
-package net.packet;
-import net.Client;
-import net.Server;
+package ixdcth.chalmers.edu.fourfun.net.packet;
+import ixdcth.chalmers.edu.fourfun.net.Client;
+import ixdcth.chalmers.edu.fourfun.net.Server;
 
 public class Packet11LoginAccept extends Packet{
 

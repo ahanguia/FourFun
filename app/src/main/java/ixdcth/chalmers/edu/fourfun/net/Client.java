@@ -1,4 +1,4 @@
-package net;
+package ixdcth.chalmers.edu.fourfun.net;
 
 import java.io.IOException;
 import java.net.DatagramPacket;
@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
-import net.packet.*;
+import ixdcth.chalmers.edu.fourfun.net.packet.*;
 
 public class Client implements Runnable{
 	

@@ -1,7 +1,7 @@
-package net.packet;
+package ixdcth.chalmers.edu.fourfun.net.packet;
 
-import net.Client;
-import net.Server;
+import ixdcth.chalmers.edu.fourfun.net.Client;
+import ixdcth.chalmers.edu.fourfun.net.Server;
 
 public abstract class Packet {
 	

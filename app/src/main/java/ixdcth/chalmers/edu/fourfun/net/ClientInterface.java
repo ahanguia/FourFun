@@ -1,4 +1,4 @@
-package net;
+package ixdcth.chalmers.edu.fourfun.net;
 
 public interface ClientInterface {
 

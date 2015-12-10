@@ -1,6 +1,5 @@
 package ixdcth.chalmers.edu.fourfun.net.packet;
-import net.Client;
-import net.Server;
+import ixdcth.chalmers.edu.fourfun.net.Client;
 
 public class Packet19GameBegin extends Packet{
 

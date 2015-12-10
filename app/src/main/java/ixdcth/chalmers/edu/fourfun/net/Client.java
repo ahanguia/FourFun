@@ -41,10 +41,23 @@ public class Client implements Runnable{
 
 	private static CreateJoinInterface createJoin;
 
-	public Client(String userName, String ip, int port, ClientInterface cientInterface){
+	/** Instance unique non préinitialisée */
+	private static Client INSTANCE = null;
+
+	/** Point d'accès pour l'instance unique du singleton */
+
+	public static Client getInstance(String userName, String ip, int port, ClientInterface clientInterface)
+	{
+		if (INSTANCE == null)
+		{ 	INSTANCE = new Client(userName, ip, port, clientInterface);
+		}
+		return INSTANCE;
+	}
+
+	private Client(String userName, String ip, int port, ClientInterface clientInterface){
 		this.userName = userName;
 		this.port = port;
-		this.clientInterface = cientInterface;
+		this.clientInterface = clientInterface;
 		this.ipString=ip;
 	}
 	
@@ -161,8 +174,8 @@ public class Client implements Runnable{
 	
 	private void handleLoginAccept(Packet packet, InetAddress address, int port){
 		System.out.println("ACCEPTED BY SERVER");
-		connected=true;
-		
+		connected = true;
+
 		createJoin.loginAccept();
 	}
 	
@@ -170,7 +183,7 @@ public class Client implements Runnable{
 		System.out.println("FAILED LOGIN BY SERVER");
 		
 		Packet12LoginFailed p = (Packet12LoginFailed) packet;
-		connected=true;
+		connected = true;
 		createJoin.loginFailed(p.getReason());
 	}
 	

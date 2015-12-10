@@ -20,6 +20,8 @@
         </activity>
         <activity android:name=".WaitingActivity" >
         </activity>
+        <activity android:name=".CreateJoinRoomActivity" >
+        </activity>
     </application>
 
 </manifest>

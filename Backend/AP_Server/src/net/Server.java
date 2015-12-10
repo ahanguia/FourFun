@@ -129,8 +129,10 @@ public class Server implements Runnable{
 	private void handleCreateRoom(Packet13CreateRoom packet, InetAddress address, int port){
 		System.out.println("[" + address.getHostAddress() + ":" + port + "] " + packet.getRoomName() + " room requested");
 		
+		Player p = new Player("derp", address, port);
+		
 		String name = packet.getRoomName();
-		gm.createRoom(gm.getPlayerMap().get(address), name);
+		gm.createRoom(p, name);
 	}
 	
 	private void handleJoinRoom(Packet16JoinRoom packet, InetAddress address, int port){

@@ -26,7 +26,7 @@ public class CreateJoinRoomActivity extends AppCompatActivity implements CreateJ
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_join_room);
         connection = new Connection();
-        client = Client.getInstance("adam", "129.16.77.163", 12753, connection);
+        client = Client.getInstance("adam", "192.168.0.18", 12753, connection);
         client.start();
 
         Client.setCreateJoinInterface(this);

@@ -3,7 +3,7 @@ import java.net.InetAddress;
 
 public class Player {
 
-	String userName;
+	String userName, hexColor = null;
 	int port;
 	InetAddress ip;
 	
@@ -45,6 +45,14 @@ public class Player {
 
 	public void setLive(boolean isLive) {
 		this.isLive = isLive;
+	}
+
+	public String getHexColor() {
+		return hexColor;
+	}
+
+	public void setHexColor(String hexColor) {
+		this.hexColor = hexColor;
 	}
 	
 	

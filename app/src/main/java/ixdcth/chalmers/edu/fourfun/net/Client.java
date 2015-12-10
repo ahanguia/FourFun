@@ -74,7 +74,7 @@ public class Client implements Runnable{
 		} catch (UnknownHostException e) {
 			e.printStackTrace();
 		}
-		while(!connected){
+		/*while(!connected){
 			loginPacket = new Packet10Login(userName);
 			sendData(loginPacket.getData());
 			
@@ -92,7 +92,7 @@ public class Client implements Runnable{
             	e.printStackTrace();
             }
             	parsePacket(packet.getData(), packet.getAddress(), packet.getPort());
-       }
+       }*/
 	
         while(running) {
         	byte[] data = new byte[1024];

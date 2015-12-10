@@ -179,7 +179,7 @@ public class Client implements Runnable{
 		
 		Packet14RoomCreated p = (Packet14RoomCreated) packet;
 
-		createJoin.roomCreated();
+		createJoin.roomCreated(p.getColor());
 	}
 	
 	private void handleRoomFailed(Packet packet, InetAddress address, int port){

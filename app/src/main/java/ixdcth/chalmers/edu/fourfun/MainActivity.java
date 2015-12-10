@@ -1,10 +1,12 @@
 package ixdcth.chalmers.edu.fourfun;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import ixdcth.chalmers.edu.fourfun.net.Client;
 import ixdcth.chalmers.edu.fourfun.net.interfaces.CreateJoinInterface;
+import ixdcth.chalmers.edu.fourfun.net.packet.Packet14RoomCreated;
 
 public class MainActivity extends AppCompatActivity implements CreateJoinInterface{
     Client client;
@@ -23,6 +25,10 @@ public class MainActivity extends AppCompatActivity implements CreateJoinInterfa
 
     @Override
     public void loginAccept() {
+        for (int i = 0; i < 1; i++) {
+            System.out.println("BRAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+        }
+
 
     }
 
@@ -32,8 +38,10 @@ public class MainActivity extends AppCompatActivity implements CreateJoinInterfa
     }
 
     @Override
-    public String roomCreated(String pColor) {
-        return null;
+    public void roomCreated(String pColor) {
+        Intent intent = new Intent(this, WaitingActivity.class);
+        intent.putExtra("color", pColor);
+        startActivity(intent);
     }
 
     @Override

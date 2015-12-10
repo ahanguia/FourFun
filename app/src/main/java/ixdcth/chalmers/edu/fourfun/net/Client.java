@@ -71,8 +71,6 @@ public class Client implements Runnable{
 		} catch (UnknownHostException e) {
 			e.printStackTrace();
 		}
-		loginPacket = new Packet10Login(userName);
-		sendData(loginPacket.getData());
 		while(!connected){
 			loginPacket = new Packet10Login(userName);
 			sendData(loginPacket.getData());
@@ -160,6 +158,7 @@ public class Client implements Runnable{
 	
 	private void handleLoginAccept(Packet packet, InetAddress address, int port){
 		System.out.println("ACCEPTED BY SERVER");
+		connected=true;
 		
 		clientInterface.loginAccept();
 	}
@@ -168,7 +167,7 @@ public class Client implements Runnable{
 		System.out.println("FAILED LOGIN BY SERVER");
 		
 		Packet12LoginFailed p = (Packet12LoginFailed) packet;
-		
+		connected=true;
 		clientInterface.loginFailed(p.getReason());
 	}
 	

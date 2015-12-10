@@ -9,6 +9,9 @@ public class Connection implements ClientInterface{
 
     @Override
     public void loginAccept() {
+        for (int i = 0; i < 1; i++) {
+            System.out.println("Connected");
+        }
 
     }
 
@@ -18,8 +21,8 @@ public class Connection implements ClientInterface{
     }
 
     @Override
-    public void roomCreated() {
-
+    public String roomCreated(String pColor) {
+        return pColor;
     }
 
     @Override

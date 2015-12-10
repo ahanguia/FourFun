@@ -53,23 +53,25 @@ public class GameManager implements ServerInterface {
 			
 			System.out.println("Group " + roomName + " has bee created by " + player.userName);
 			
-			server.sendData(new Packet14RoomCreated(roomName).getData(), 
-					player.ip, player.port);
+			Packet14RoomCreated p = new Packet14RoomCreated("#ff0000");
+			server.sendData(p.getData(), player.ip, player.port);
 		}
 	}
 
 	@Override
 	public void joinRoom(Player player, String roomName) {
 		boolean doesExist = false;
+		Group toJoin = null;
 		for(Group g : groups){
 			if(g.getName().toLowerCase().equals(roomName.toLowerCase())){
 				doesExist = true;
+				toJoin = g;
+				break;
 			}
 		}
 		
 		if(doesExist == true){
-			server.sendData(new Packet15RoomFailed("room already exists").getData(), 
-					player.ip, player.port);
+			
 		}else{
 			Group newGroup = new Group(roomName);
 			groups.add(newGroup);

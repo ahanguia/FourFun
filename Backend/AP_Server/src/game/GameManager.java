@@ -34,6 +34,14 @@ public class GameManager implements ServerInterface {
 		}
 	}
 
+	public Server getServer() {
+		return server;
+	}
+
+	public void setServer(Server server) {
+		this.server = server;
+	}
+
 	@Override
 	public void createRoom(Player player, String roomName) {
 		boolean doesExist = false;

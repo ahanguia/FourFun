@@ -1,8 +1,7 @@
 package ixdcth.chalmers.edu.fourfun.net.packet;
 import java.util.ArrayList;
-
-import net.Client;
-import net.Server;
+import ixdcth.chalmers.edu.fourfun.net.Client;
+import ixdcth.chalmers.edu.fourfun.net.Server;
 
 public class Packet24StartDiscussion extends Packet{
 	
@@ -31,7 +30,7 @@ public class Packet24StartDiscussion extends Packet{
 
 	@Override
 	public void writeData(Server server) {
-		server.sendDataToAllClients(getData());
+
 	}
 	
 	@Override

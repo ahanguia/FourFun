@@ -1,5 +1,6 @@
 package ixdcth.chalmers.edu.fourfun.net.packet;
 import ixdcth.chalmers.edu.fourfun.net.Client;
+import ixdcth.chalmers.edu.fourfun.net.Server;
 
 public class Packet17RoomJoined extends Packet{
 
@@ -31,7 +32,7 @@ public class Packet17RoomJoined extends Packet{
 		
 	}
 
-	public String getColor(){
+    public String getColor(){
 		return hexColor;
 	}
 }

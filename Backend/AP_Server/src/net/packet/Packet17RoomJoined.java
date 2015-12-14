@@ -1,4 +1,4 @@
-package ixdcth.chalmers.edu.fourfun.net.packet;
+package net.packet;
 import net.Client;
 import net.Server;
 

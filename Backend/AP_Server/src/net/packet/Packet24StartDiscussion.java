@@ -1,4 +1,4 @@
-package ixdcth.chalmers.edu.fourfun.net.packet;
+package net.packet;
 import java.util.ArrayList;
 
 import net.Client;

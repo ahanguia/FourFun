@@ -52,7 +52,7 @@
         android:layout_height="100dp"
         android:onClick="joinRoom"
         android:paddingLeft="0dp"
-            android:layout_gravity="top|left|center_vertical" />
+        android:layout_gravity="top|left|center_vertical" />
 
     </FrameLayout>
 

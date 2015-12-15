@@ -103,6 +103,18 @@ public class Server implements Runnable{
 				packet = new Packet16JoinRoom(data);
 				handleJoinRoom((Packet16JoinRoom) packet, address, port);
 				break;
+			case SENDQUESTION:
+				packet = new Packet20SendQuestion(data);
+				handleSendQuestion((Packet20SendQuestion) packet, address, port);
+				break;
+			case SENDANSWER:
+				packet = new Packet22SendAnswer(data);
+				handleSendAnswer((Packet22SendAnswer) packet, address, port);
+				break;
+			case DONEDISCUSSING:
+				packet = new Packet25EndDiscussion(data);
+				handleEndDiscussion((Packet25EndDiscussion) packet, address, port);
+				break;
 			default:
 				break;
 		}
@@ -142,6 +154,26 @@ public class Server implements Runnable{
 		gm.joinRoom(gm.getPlayerMap().get(address), name);
 	}
 
+	private void handleSendQuestion(Packet20SendQuestion packet, InetAddress address, int port){
+		System.out.println("[" + address.getHostAddress() + ":" + port + "] " + packet.getQuestion() + "?");
+		
+		String question = packet.getQuestion();
+		gm.questionSent(gm.getPlayerMap().get(address), question);
+	}
+	
+	private void handleSendAnswer(Packet22SendAnswer packet, InetAddress address, int port){
+		System.out.println("[" + address.getHostAddress() + ":" + port + "] " + packet.getAnswer() + "!");
+		
+		String answer = packet.getAnswer();
+		gm.answerSent(gm.getPlayerMap().get(address), answer);
+	}
+	
+	private void handleEndDiscussion(Packet25EndDiscussion packet, InetAddress address, int port){
+		System.out.println("[" + address.getHostAddress() + ":" + port + "Done Discussing!");
+		
+		gm.discussionDone(gm.getPlayerMap().get(address));
+	}
+	
 	public void sendData(byte[] data, InetAddress ip, int port){
 		DatagramPacket packet = new DatagramPacket(data, data.length, ip, port);
 		

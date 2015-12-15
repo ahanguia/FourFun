@@ -9,42 +9,50 @@
     android:background="@color/orange_bakgrnd"
     android:orientation="vertical"
     android:weightSum="100">
-    <TextView
-        android:layout_width="match_parent"
+
+    <ImageView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="40"
-        android:text="4 Fun"
-        android:textColor="#ffffff"
-        android:gravity="center_vertical|center_horizontal"
-        android:textSize="90dp"/>
+        android:id="@+id/imageView"
+        android:src="@drawable/logo"
+        android:layout_gravity="center_horizontal"
+        android:padding="20dp" />
+
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="30"
-        android:hint="Enter room name"
+        android:hint="Enter Room Name"
         android:textColorHint="#ffffff"
         android:paddingLeft="70dp"
         android:paddingRight="70dp"
-        android:paddingBottom="20dp" />
-    <LinearLayout
-        android:layout_width="match_parent"
+        android:paddingBottom="20dp"
+        android:gravity="center|center_horizontal" />
+
+    <FrameLayout
+        android:layout_width="351dp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_weight="30"
-        android:paddingTop="30dp">
-    <ImageView
-        android:clickable="true"
-        android:src="@mipmap/create_room_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="createRoom"
-        android:paddingLeft="40dp"/>
-    <ImageView
-        android:src="@mipmap/join_room"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_weight="10.31"
+        android:layout_gravity="top|right"
+        android:padding="40dp">
+
+        <ImageView
+            android:clickable="true"
+            android:src="@drawable/Join"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:onClick="createRoom"
+            android:paddingLeft="0dp"
+            android:layout_gravity="top|center_vertical|right" />
+
+        <ImageView
+        android:src="@drawable/CreateNew"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:onClick="joinRoom"
-        android:paddingLeft="30dp"/>
-    </LinearLayout>
+        android:paddingLeft="0dp"
+            android:layout_gravity="top|left|center_vertical" />
+
+    </FrameLayout>
 
 </LinearLayout>

@@ -22,6 +22,14 @@
         </activity>
         <activity android:name=".CreateJoinRoomActivity" >
         </activity>
+        <activity android:name=".Connection$QuestionActivity" >
+        </activity>
+        <activity android:name=".QuestionActivity" >
+        </activity>
+        <activity android:name=".AnswerActivity" >
+        </activity>
+        <activity android:name=".DiscussionActivity" >
+        </activity>
     </application>
 
 </manifest>

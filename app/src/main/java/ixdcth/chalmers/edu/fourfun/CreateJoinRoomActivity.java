@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import ixdcth.chalmers.edu.fourfun.net.Client;
 import ixdcth.chalmers.edu.fourfun.net.interfaces.CreateJoinInterface;
@@ -27,7 +28,7 @@ public class CreateJoinRoomActivity extends AppCompatActivity implements CreateJ
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_join_room);
         connection = new Connection();
-        client = Client.getInstance("adam", "129.16.78.198", 12753, connection);
+        client = Client.getInstance();
         client.start();
 
         Client.setCreateJoinInterface(this);
@@ -58,17 +59,22 @@ public class CreateJoinRoomActivity extends AppCompatActivity implements CreateJ
 
     @Override
     public void roomFailed(String reason) {
+        Toast toast = Toast.makeText(this, "ROOM haven't been created because "+reason, Toast.LENGTH_LONG);
+        toast.show();
 
     }
 
     @Override
     public void roomJoined(String colorID) {
-
+        Intent intent = new Intent(this, WaitingActivity.class);
+        intent.putExtra("color", colorID);
+        startActivity(intent);
     }
 
     @Override
     public void joinFailed(String reason) {
-
+        Toast toast = Toast.makeText(this, "ROOM haven't been joined because "+reason, Toast.LENGTH_LONG);
+        toast.show();
     }
 
     private class Async extends AsyncTask<Void, Integer, Void> {

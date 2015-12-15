@@ -12,7 +12,9 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
+import ixdcth.chalmers.edu.fourfun.ResourceState;
 import ixdcth.chalmers.edu.fourfun.net.interfaces.CreateJoinInterface;
+import ixdcth.chalmers.edu.fourfun.net.interfaces.WaitingInterface;
 import ixdcth.chalmers.edu.fourfun.net.packet.*;
 
 public class Client implements Runnable{
@@ -36,28 +38,28 @@ public class Client implements Runnable{
 	
 	private Packet10Login loginPacket;
 	private String userName;
-	
-	private ClientInterface clientInterface;
+
 
 	private static CreateJoinInterface createJoin;
+	private static WaitingInterface waitingI;
 
 	/** Instance unique non préinitialisée */
 	private static Client INSTANCE = null;
 
 	/** Point d'accès pour l'instance unique du singleton */
 
-	public static Client getInstance(String userName, String ip, int port, ClientInterface clientInterface)
+	public static Client getInstance()
 	{
 		if (INSTANCE == null)
-		{ 	INSTANCE = new Client(userName, ip, port, clientInterface);
+		{ 	INSTANCE = new Client(ResourceState.playerName, ResourceState.ip, ResourceState.port);
 		}
 		return INSTANCE;
 	}
 
-	private Client(String userName, String ip, int port, ClientInterface clientInterface){
+
+	private Client(String userName, String ip, int port){
 		this.userName = userName;
 		this.port = port;
-		this.clientInterface = clientInterface;
 		this.ipString=ip;
 	}
 	
@@ -154,6 +156,26 @@ public class Client implements Runnable{
 				packet = new Packet15RoomFailed(data);
 				handleRoomFailed(packet, address, port);
 				break;
+			case GAMEBEGIN:
+				System.out.println("GAAAAAAME BEGIIIIIIIN ! Packet Received");
+				packet = new Packet19GameBegin(data);
+				handleGameBegin(packet, address, port);
+				break;
+			case QUESTIONRECEIVED:
+				System.out.println("Question received ! Packet Received");
+				packet = new Packet21QuestionReceived(data);
+				handleQuestionReceived(packet, address, port);
+				break;
+			case ANSWERRECEIVED:
+				System.out.println("Answer received ! Packet Received");
+				packet = new Packet23AnswerReceived(data);
+				handleAnswerReceived(packet, address, port);
+				break;
+			case STARTDISCUSSION:
+				System.out.println("Start discussion ! Packet Received");
+				packet = new Packet24StartDiscussion(data);
+				handleStartDiscussion(packet, address, port);
+				break;
 			/*case CONNECT:
 				System.out.println("CONNECT PACKET RECEIVED");
 				packet = new Packet13Connect(data);
@@ -202,6 +224,35 @@ public class Client implements Runnable{
 
 		createJoin.roomFailed(p.getReason());
 	}
+	private void handleGameBegin(Packet packet, InetAddress address, int port){
+		System.out.println("GAME BEGIIIIIN");
+
+		Packet19GameBegin p = (Packet19GameBegin) packet;
+
+		waitingI.gameBegin(p.getIsQuestioneer());
+	}
+	private void handleQuestionReceived(Packet packet, InetAddress address, int port){
+		System.out.println("Question Received");
+
+		Packet21QuestionReceived p = (Packet21QuestionReceived) packet;
+
+		waitingI.questionRecieved(p.getQuestion());
+	}
+	private void handleAnswerReceived(Packet packet, InetAddress address, int port){
+		System.out.println("Answer Received");
+
+		Packet23AnswerReceived p = (Packet23AnswerReceived) packet;
+
+		waitingI.answerReceived(null);
+	}
+	private void handleStartDiscussion(Packet packet, InetAddress address, int port){
+		System.out.println("Start Discussion !!! ");
+
+		Packet24StartDiscussion p = (Packet24StartDiscussion) packet;
+
+		waitingI.startDiscussion(p.getQuestion(),p.getAnswers());
+	}
+
 	
 	public void sendData(byte[] data){
 		if(!disconnected){
@@ -220,6 +271,9 @@ public class Client implements Runnable{
 
 	public static void setCreateJoinInterface(CreateJoinInterface cji){
 		createJoin = cji;
+	}
+	public static void setWaitingInterface(WaitingInterface wI){
+		waitingI = wI;
 	}
 
 }

@@ -1,5 +1,8 @@
 package ixdcth.chalmers.edu.fourfun;
 
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+
 import ixdcth.chalmers.edu.fourfun.net.ClientInterface;
 
 /**
@@ -59,4 +62,5 @@ public class Connection implements ClientInterface{
     public void startDiscussion(String[] answers) {
 
     }
+
 }

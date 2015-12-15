@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import ixdcth.chalmers.edu.fourfun.net.Client;
@@ -26,7 +27,7 @@ public class CreateJoinRoomActivity extends AppCompatActivity implements CreateJ
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_join_room);
         connection = new Connection();
-        client = Client.getInstance("adam", "192.168.0.18", 12753, connection);
+        client = Client.getInstance("adam", "129.16.78.198", 12753, connection);
         client.start();
 
         Client.setCreateJoinInterface(this);
@@ -98,9 +99,11 @@ public class CreateJoinRoomActivity extends AppCompatActivity implements CreateJ
     }
 
 
-    public void createRoom(View v) {
-        new Async().execute();
-    }
     public void joinRoom(View v) {
+
+    }
+    public void createRoom(View v) {
+        Log.i("ADAM","Room Created");
+        new Async().execute();
     }
 }

@@ -42,7 +42,7 @@
             android:src="@drawable/join"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:onClick="createRoom"
+            android:onClick="joinRoom"
             android:paddingLeft="0dp"
             android:layout_gravity="top|center_vertical|right" />
 
@@ -50,7 +50,7 @@
         android:src="@drawable/create_new"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:onClick="joinRoom"
+        android:onClick="createRoom"
         android:paddingLeft="0dp"
         android:layout_gravity="top|left|center_vertical" />
 

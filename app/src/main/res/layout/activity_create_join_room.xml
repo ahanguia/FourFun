@@ -21,7 +21,8 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="30"
+        android:layout_weight="5"
+        style="@style/edit_text_begin"
         android:hint="Enter Room Name"
         android:textColorHint="#ffffff"
         android:paddingLeft="70dp"
@@ -38,7 +39,7 @@
 
         <ImageView
             android:clickable="true"
-            android:src="@drawable/Join"
+            android:src="@drawable/join"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:onClick="createRoom"
@@ -46,7 +47,7 @@
             android:layout_gravity="top|center_vertical|right" />
 
         <ImageView
-        android:src="@drawable/CreateNew"
+        android:src="@drawable/create_new"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:onClick="joinRoom"

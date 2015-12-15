@@ -11,6 +11,8 @@ import net.packet.Packet24StartDiscussion;
 
 public class Group {
 
+	private final int roomSize = 2;
+	
 	private String name;
 	
 	private ArrayList<String> colors = new ArrayList<String>();
@@ -65,11 +67,11 @@ public class Group {
 	public boolean tryAddNewPlayer(Player player){
 		if(players.contains(player)){
 			return true;
-		}else if(players.size() >= 4){
+		}else if(players.size() >= roomSize){
 			return false;
 		}else{
 			players.add(player);
-			if(players.size() >= 4)
+			if(players.size() >= roomSize)
 				isFull = true;
 			return true;
 		}
@@ -134,7 +136,7 @@ public class Group {
 		server.sendData(pack.getData(), player.ip, player.port);
 		
 		Packet24StartDiscussion pack2;
-		if(answers.size() >= 3){
+		if(answers.size() >= roomSize - 1){
 			for(Player p : players){
 				pack2 = new Packet24StartDiscussion(question, answers);
 				server.sendData(pack.getData(), p.ip, p.port);

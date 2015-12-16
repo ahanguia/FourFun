@@ -2,6 +2,8 @@ package game;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import net.Server;
 import net.packet.Packet19GameBegin;
@@ -18,7 +20,8 @@ public class Group {
 	private ArrayList<String> colors = new ArrayList<String>();
 	private LinkedList<Player> players = new LinkedList<Player>();
 	
-	private int timer, timeLeft;
+	//private int timer, timeLeft;
+	private Timer timer;
 	
 	private boolean isFull = false;
 	
@@ -45,18 +48,30 @@ public class Group {
 	public void tick(float dt){
 		//System.out.println(name + " ticking...");
 		
-		if(isFull){
-			//timer++;
-			gameBegun = true;
-			
+		if(isFull){	
 			if(discussionPhase){
-				
+				this.timer = new Timer();
+			    TimerTask action = new TimerTask() {
+			        public void run() {
+			        	startDiscussion(); //as you said in the comments: abc is a static method
+			        }
+			    };
+			    this.timer.schedule(action, 5000);
+			    gameBegun = false;
+			    discussionPhase = false;
 			}else if(answerPhase){
 				
 			}else if(questionPhase){
 				
 			}else if(gameBegun){
-				startNewSession();
+				this.timer = new Timer();
+			    TimerTask action = new TimerTask() {
+			        public void run() {
+			        	startNewSession(); //as you said in the comments: abc is a static method
+			        }
+			    };
+			    this.timer.schedule(action, 5000);
+			    gameBegun = false;
 			}
 			
 			/*if(timer % 10 == 0){
@@ -79,6 +94,7 @@ public class Group {
 			if(players.size() >= roomSize){
 				System.out.println("Room " + name + " is FULL!");
 				isFull = true;
+				gameBegun = true;
 			}
 			return true;
 		}
@@ -111,9 +127,7 @@ public class Group {
 			}else{
 				pack = new Packet19GameBegin(false);
 			}
-			
 			count++;
-			
 			server.sendData(pack.getData(), p.ip, p.port);
 		}
 		
@@ -142,14 +156,18 @@ public class Group {
 		Packet23AnswerReceived pack = new Packet23AnswerReceived();
 		server.sendData(pack.getData(), player.ip, player.port);
 		
-		Packet24StartDiscussion pack2;
+		System.out.println("Number of answers: " + answers.size());
+		
 		if(answers.size() >= roomSize - 1){
-			for(Player p : players){
-				pack2 = new Packet24StartDiscussion(question, answers);
-				server.sendData(pack.getData(), p.ip, p.port);
-			}
-			
 			discussionPhase = true;
+		}
+	}
+	
+	public void startDiscussion(){
+		Packet24StartDiscussion pack2;
+		for(Player p : players){
+			pack2 = new Packet24StartDiscussion(question, answers);
+			server.sendData(pack2.getData(), p.ip, p.port);
 		}
 	}
 	

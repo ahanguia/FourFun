@@ -163,20 +163,20 @@ public class Server implements Runnable{
 		System.out.println("[" + address.getHostAddress() + ":" + port + "] " + packet.getQuestion() + "?");
 		
 		String question = packet.getQuestion();
-		gm.questionSent(gm.getPlayerMap().get(address), question);
+		gm.questionSent(gm.getPlayer(address, port), question);
 	}
 	
 	private void handleSendAnswer(Packet22SendAnswer packet, InetAddress address, int port){
 		System.out.println("[" + address.getHostAddress() + ":" + port + "] " + packet.getAnswer() + "!");
 		
 		String answer = packet.getAnswer();
-		gm.answerSent(gm.getPlayerMap().get(address), answer);
+		gm.answerSent(gm.getPlayer(address, port), answer);
 	}
 	
 	private void handleEndDiscussion(Packet25EndDiscussion packet, InetAddress address, int port){
 		System.out.println("[" + address.getHostAddress() + ":" + port + "Done Discussing!");
 		
-		gm.discussionDone(gm.getPlayerMap().get(address));
+		gm.discussionDone(gm.getPlayer(address, port));
 	}
 	
 	public void sendData(byte[] data, InetAddress ip, int port){

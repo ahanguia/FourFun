@@ -57,7 +57,7 @@ public class WaitingActivity extends AppCompatActivity implements WaitingInterfa
     @Override
     public void questionRecieved(String question) {
         if(ResourceState.isQ==false){
-            Intent intent = new Intent(this, QuestionActivity.class);
+            Intent intent = new Intent(this, AnswerActivity.class);
             intent.putExtra("question",question);
             startActivity(intent);
         }

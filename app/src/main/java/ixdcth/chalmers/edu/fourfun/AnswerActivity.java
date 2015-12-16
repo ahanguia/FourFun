@@ -21,7 +21,7 @@ public class AnswerActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_answer);
-        ET.findViewById(R.id.answer_ET);
+        ET = (EditText) findViewById(R.id.answer_ET);
         client= Client.getInstance();
     }
     public void sendAnswer(View v){

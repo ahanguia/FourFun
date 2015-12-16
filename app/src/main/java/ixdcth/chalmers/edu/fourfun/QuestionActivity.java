@@ -25,6 +25,7 @@ public class QuestionActivity extends AppCompatActivity {
         ET = (EditText) findViewById(R.id.question_ET);
         client=Client.getInstance();
     }
+
     public void sendQuestion(View v){
         if(ET.getText().toString().isEmpty()){
             Toast toast = Toast.makeText(this, "Perhaps i have to give the question to somebody else ? Please WRITE IT !!!", Toast.LENGTH_LONG);
@@ -46,7 +47,6 @@ public class QuestionActivity extends AppCompatActivity {
         @Override
         protected void onProgressUpdate(Integer... values) {
             super.onProgressUpdate(values);
-
         }
 
         @Override

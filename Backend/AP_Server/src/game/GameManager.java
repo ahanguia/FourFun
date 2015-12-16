@@ -131,6 +131,12 @@ public class GameManager implements ServerInterface {
 	public void setServer(Server server) {
 		this.server = server;
 	}
+
+	public HashMap<InetAddress, Group> getGroupMap() {
+		return groupMap;
+	}
+	
+	
 	
 	
 

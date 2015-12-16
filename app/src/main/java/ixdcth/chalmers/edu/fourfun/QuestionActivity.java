@@ -22,7 +22,7 @@ public class QuestionActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question);
-        ET.findViewById(R.id.question_ET);
+        ET = (EditText) findViewById(R.id.question_ET);
         client=Client.getInstance();
     }
     public void sendQuestion(View v){

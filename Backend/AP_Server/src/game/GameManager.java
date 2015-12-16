@@ -37,6 +37,7 @@ public class GameManager implements ServerInterface {
 
 	@Override
 	public void createRoom(Player player, String roomName) {
+		System.out.println("Creating room: " +  roomName);
 		boolean doesExist = false;
 		for(Group g : groups){
 			if(g.getName().toLowerCase().equals(roomName.toLowerCase())){
@@ -45,14 +46,18 @@ public class GameManager implements ServerInterface {
 		}
 		
 		if(doesExist == true){
+			System.out.println("room " +  roomName + " Exists!");
 			server.sendData(new Packet15RoomFailed("room already exists").getData(), 
 					player.ip, player.port);
 		}else{
+			System.out.println("room " +  roomName + " does not exist!");
 			Group newGroup = new Group(roomName, server);
 			groups.add(newGroup);
 			groupMap.put(player.ip, newGroup);
 			
-			System.out.println("Group " + roomName + " has been created by " + player.userName);
+			newGroup.tryAddNewPlayer(player);
+			
+			System.out.println("Group " + roomName + " has been created by " + player.ip);
 			
 			Packet14RoomCreated p = new Packet14RoomCreated(newGroup.popColor(player));
 			server.sendData(p.getData(), player.ip, player.port);
@@ -61,6 +66,7 @@ public class GameManager implements ServerInterface {
 
 	@Override
 	public void joinRoom(Player player, String roomName) {
+		System.out.println(player.ip.toString() + " Joining room: " +  roomName);
 		boolean doesExist = false;
 		Group toJoin = null;
 		for(Group g : groups){
@@ -73,14 +79,17 @@ public class GameManager implements ServerInterface {
 		
 		if(doesExist == true){
 			if(toJoin.tryAddNewPlayer(player)){
+				System.out.println("room " +  roomName + " Exists and not full!");
 				server.sendData(new Packet17RoomJoined(toJoin.popColor(player)).getData(), 
 						player.ip, player.port);
 				groupMap.put(player.ip, toJoin);
 			}else{
+				System.out.println("room " +  roomName + " Room full!");
 				server.sendData(new Packet18JoinFailed("Room full!").getData(), 
 						player.ip, player.port);
 			}
 		}else{
+			System.out.println("room " +  roomName + " Does not exist!");
 			server.sendData(new Packet18JoinFailed("Room does not exist!").getData(), 
 					player.ip, player.port);
 		}

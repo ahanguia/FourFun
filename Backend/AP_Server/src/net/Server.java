@@ -182,7 +182,7 @@ public class Server implements Runnable{
 	public void sendData(byte[] data, InetAddress ip, int port){
 		DatagramPacket packet = new DatagramPacket(data, data.length, ip, port);
 		
-		System.out.println("SendPacket: " + new String(packet.getData() + " to Address " + ip + ":" + port));
+		System.out.println("SendPacket: " + new String(packet.getData()) + " to Address " + ip + ":" + port);
 		
 		try {
 			socket.send(packet);
@@ -202,5 +202,4 @@ public class Server implements Runnable{
 			sendData(data, p.getIp(), p.getPort());
 		}	
 	}
-
 }

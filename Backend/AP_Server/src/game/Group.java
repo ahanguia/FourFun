@@ -43,6 +43,8 @@ public class Group {
 	}
 	
 	public void tick(float dt){
+		//System.out.println(name + " ticking...");
+		
 		if(isFull){
 			//timer++;
 			gameBegun = true;
@@ -66,13 +68,18 @@ public class Group {
 	
 	public boolean tryAddNewPlayer(Player player){
 		if(players.contains(player)){
+			System.out.println("Player is member of " + name + ", snding confirmation...");
 			return true;
 		}else if(players.size() >= roomSize){
+			System.out.println("Room " + name + " is full...");
 			return false;
 		}else{
 			players.add(player);
-			if(players.size() >= roomSize)
+			System.out.println("Adding new player to " + name + "! New Size: " + players.size());
+			if(players.size() >= roomSize){
+				System.out.println("Room " + name + " is FULL!");
 				isFull = true;
+			}
 			return true;
 		}
 	}

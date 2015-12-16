@@ -39,7 +39,7 @@
 
         <ImageView
             android:clickable="true"
-            android:src="@drawable/join"
+            android:src="@drawable/join_room"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:onClick="joinRoom"
@@ -47,7 +47,7 @@
             android:layout_gravity="top|center_vertical|right" />
 
         <ImageView
-        android:src="@drawable/create_new"
+        android:src="@drawable/create_room"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:onClick="createRoom"

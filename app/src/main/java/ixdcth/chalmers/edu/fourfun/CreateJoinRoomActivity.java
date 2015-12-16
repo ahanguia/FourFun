@@ -7,6 +7,7 @@ import ixdcth.chalmers.edu.fourfun.net.packet.Packet14RoomCreated;
 
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.Looper;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,6 +17,7 @@ import android.widget.Toast;
 import ixdcth.chalmers.edu.fourfun.net.Client;
 import ixdcth.chalmers.edu.fourfun.net.interfaces.CreateJoinInterface;
 import ixdcth.chalmers.edu.fourfun.net.packet.Packet13CreateRoom;
+import ixdcth.chalmers.edu.fourfun.net.packet.Packet16JoinRoom;
 
 public class CreateJoinRoomActivity extends AppCompatActivity implements CreateJoinInterface {
 
@@ -32,8 +34,6 @@ public class CreateJoinRoomActivity extends AppCompatActivity implements CreateJ
         client.start();
 
         Client.setCreateJoinInterface(this);
-
-
     }
 
     @Override
@@ -59,13 +59,13 @@ public class CreateJoinRoomActivity extends AppCompatActivity implements CreateJ
 
     @Override
     public void roomFailed(String reason) {
-        Toast toast = Toast.makeText(this, "ROOM haven't been created because "+reason, Toast.LENGTH_LONG);
-        toast.show();
-
+        /*Toast toast = Toast.makeText(this, "ROOM haven't been created because "+reason, Toast.LENGTH_LONG);
+        toast.show();*/
     }
 
     @Override
     public void roomJoined(String colorID) {
+        Log.i("SIMON", "Room Joined");
         Intent intent = new Intent(this, WaitingActivity.class);
         intent.putExtra("color", colorID);
         startActivity(intent);
@@ -73,11 +73,20 @@ public class CreateJoinRoomActivity extends AppCompatActivity implements CreateJ
 
     @Override
     public void joinFailed(String reason) {
-        Toast toast = Toast.makeText(this, "ROOM haven't been joined because "+reason, Toast.LENGTH_LONG);
-        toast.show();
+        /*Toast toast = Toast.makeText(this, "ROOM haven't been joined because "+reason, Toast.LENGTH_LONG);
+        toast.show();*/
     }
 
-    private class Async extends AsyncTask<Void, Integer, Void> {
+    public void createRoom(View v) {
+        Log.i("ADAM", "Room Created");
+        new CreateAsync().execute();
+    }
+    public void joinRoom(View v) {
+        Log.i("ADAM","Room Joined");
+        new JoinAsync().execute();
+    }
+
+    private class CreateAsync extends AsyncTask<Void, Integer, Void> {
 
         @Override
         protected void onPreExecute() {
@@ -104,12 +113,33 @@ public class CreateJoinRoomActivity extends AppCompatActivity implements CreateJ
         }
     }
 
+    private class JoinAsync extends AsyncTask<Void, Integer, Void> {
 
-    public void joinRoom(View v) {
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
 
+        @Override
+        protected void onProgressUpdate(Integer... values) {
+            super.onProgressUpdate(values);
+
+        }
+
+        @Override
+        protected Void doInBackground(Void... arg0) {
+            Packet16JoinRoom packet16JoinRoom = new Packet16JoinRoom("My Room");
+            client.sendData(packet16JoinRoom.getData());
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void result) {
+
+        }
     }
-    public void createRoom(View v) {
-        Log.i("ADAM","Room Created");
-        new Async().execute();
-    }
+
+
+
+
 }

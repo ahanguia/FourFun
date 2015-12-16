@@ -8,7 +8,6 @@ import ixdcth.chalmers.edu.fourfun.net.ClientInterface;
 public  class ResourceState {
     public static boolean isQ;
     public static String playerName="Player";
-    public static String ip="192.168.43.120";
+    public static String ip="129.16.75.134";
     public static int port=12753;
-
 }

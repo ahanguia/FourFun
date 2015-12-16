@@ -1,5 +1,7 @@
 package ixdcth.chalmers.edu.fourfun.net;
 
+import android.util.Log;
+
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
@@ -124,8 +126,8 @@ public class Client implements Runnable{
             	e.printStackTrace();
             }
             	parsePacket(packet.getData(), packet.getAddress(), packet.getPort());
-            }
-           socket.close();
+		}
+		socket.close();
 	}
 
 	private void parsePacket(byte[] data, InetAddress address, int port) {
@@ -147,7 +149,7 @@ public class Client implements Runnable{
 				handleLoginFailed(packet, address, port);
 				break;
 			case ROOMCREATED:
-				System.out.println("ROOM CREATED PACKET RECEIVED");
+				Log.i("CLIENT", "ROOM CREATED PACKET RECEIVED");
 				packet = new Packet14RoomCreated(data);
 				handleRoomCreated(packet, address, port);
 				break;
@@ -155,6 +157,16 @@ public class Client implements Runnable{
 				System.out.println("ROOM FAILED PACKET RECEIVED");
 				packet = new Packet15RoomFailed(data);
 				handleRoomFailed(packet, address, port);
+				break;
+			case ROOMJOINED:
+				System.out.println("ROOM JOINED PACKET RECEIVED");
+				packet = new Packet17RoomJoined(data);
+				handleRoomJoined(packet, address, port);
+				break;
+			case JOINFAILED:
+				System.out.println("JOIN FAILED PACKET RECEIVED");
+				packet = new Packet18JoinFailed(data);
+				handleJoinFailed(packet, address, port);
 				break;
 			case GAMEBEGIN:
 				System.out.println("GAAAAAAME BEGIIIIIIIN ! Packet Received");
@@ -224,6 +236,22 @@ public class Client implements Runnable{
 
 		createJoin.roomFailed(p.getReason());
 	}
+
+	private void handleRoomJoined(Packet packet, InetAddress address, int port){
+		Log.i("Clients", "ROOM HAS BEEN JOINED");
+
+		Packet17RoomJoined p = (Packet17RoomJoined) packet;
+
+		createJoin.roomJoined(p.getColor());
+	}
+
+	private void handleJoinFailed(Packet packet, InetAddress address, int port){
+		System.out.println("FAILED ROOM CREATION BY SERVER");
+
+		Packet18JoinFailed p = (Packet18JoinFailed) packet;
+
+		createJoin.joinFailed(p.getReason());
+	}
 	private void handleGameBegin(Packet packet, InetAddress address, int port){
 		System.out.println("GAME BEGIIIIIN");
 
@@ -250,7 +278,7 @@ public class Client implements Runnable{
 
 		Packet24StartDiscussion p = (Packet24StartDiscussion) packet;
 
-		waitingI.startDiscussion(p.getQuestion(),p.getAnswers());
+		waitingI.startDiscussion(p.getQuestion(), p.getAnswers());
 	}
 
 	

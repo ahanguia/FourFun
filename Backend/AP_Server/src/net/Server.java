@@ -151,7 +151,8 @@ public class Server implements Runnable{
 		System.out.println("[" + address.getHostAddress() + ":" + port + "] " + packet.getRoomName() + " join room requested");
 		
 		String name = packet.getRoomName();
-		gm.joinRoom(gm.getPlayerMap().get(address), name);
+		Player player = gm.getPlayer(address, port);
+		gm.joinRoom(player, name);
 	}
 
 	private void handleSendQuestion(Packet20SendQuestion packet, InetAddress address, int port){

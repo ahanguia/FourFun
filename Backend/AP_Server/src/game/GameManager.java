@@ -113,6 +113,16 @@ public class GameManager implements ServerInterface {
 		groupMap.get(player.ip).endDiscussion();
 	}
 
+	public Player getPlayer(InetAddress ip, int port){
+		if(playerMap.containsKey(ip)){
+			return playerMap.get(ip);
+		}else{
+			Player player = new Player("", ip, port);
+			playerMap.put(player.ip, player);
+			return player;
+		}
+	}
+	
 	public HashMap<InetAddress, Player> getPlayerMap() {
 		return playerMap;
 	}

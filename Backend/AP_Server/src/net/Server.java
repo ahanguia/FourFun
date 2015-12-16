@@ -85,6 +85,10 @@ public class Server implements Runnable{
 	private void parsePacket(byte[] data, InetAddress address, int port) {
 		String message = new String(data).trim();
 		
+		if(gm.getPlayerMap().containsKey(address)){
+			gm.getPlayerMap().get(address).setPort(port);
+		}
+		
 		//System.out.println(message.substring(0, 2));
 		Packet.PacketTypes type = Packet.lookupPacket(Integer.parseInt(message.substring(0, 2)));
 		Packet packet = null;
@@ -178,7 +182,7 @@ public class Server implements Runnable{
 	public void sendData(byte[] data, InetAddress ip, int port){
 		DatagramPacket packet = new DatagramPacket(data, data.length, ip, port);
 		
-		System.out.println("SendPacket: " + new String(packet.getData()));
+		System.out.println("SendPacket: " + new String(packet.getData() + " to Address " + ip + ":" + port));
 		
 		try {
 			socket.send(packet);

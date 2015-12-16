@@ -37,12 +37,6 @@ public class GameManager implements ServerInterface {
 
 	@Override
 	public void createRoom(Player player, String roomName) {
-		if(playerMap.containsKey(player.ip)){
-			player = playerMap.get(player.ip);
-		}else{
-			playerMap.put(player.ip, player);
-		}
-		
 		boolean doesExist = false;
 		for(Group g : groups){
 			if(g.getName().toLowerCase().equals(roomName.toLowerCase())){
@@ -67,12 +61,6 @@ public class GameManager implements ServerInterface {
 
 	@Override
 	public void joinRoom(Player player, String roomName) {
-		if(playerMap.containsKey(player.ip)){
-			player = playerMap.get(player.ip);
-		}else{
-			playerMap.put(player.ip, player);
-		}
-
 		boolean doesExist = false;
 		Group toJoin = null;
 		for(Group g : groups){

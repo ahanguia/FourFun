@@ -28,12 +28,12 @@ public class WaitingActivity extends Activity implements WaitingInterface {
         setContentView(R.layout.activity_waiting);
         loadQuote();
 
-        /*client=Client.getInstance();
+        client=Client.getInstance();
         client.setWaitingInterface(this);
         Intent i=getIntent();
         color=i.getStringExtra("color");
         Toast toast = Toast.makeText(this, color, Toast.LENGTH_LONG);
-        toast.show();*/
+        toast.show();
     }
 
     private void loadQuote() {

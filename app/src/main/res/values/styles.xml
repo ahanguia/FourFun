@@ -14,5 +14,20 @@
         <item name="android:alpha">1</item>
         <item name="android:paddingLeft">10dp</item>
     </style>
+    <style name="room_name_bar">
+        <item name="android:background">@color/white</item>
+        <item name="android:alpha">1</item>
+        <item name="android:height">50dp</item>
+        <item name="android:minHeight">50dp</item>
+        <item name="android:textColor">@color/orange_bakgrnd</item>
+        <item name="android:paddingLeft">20dp</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">18dp</item>
+    </style>
 
 </resources>

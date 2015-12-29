@@ -7,25 +7,44 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="ixdcth.chalmers.edu.fourfun.WaitingActivity"
     android:background="@color/orange_bakgrnd"
-    android:orientation="vertical">
-
-    <pl.droidsonroids.gif.GifImageView
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:id="@+id/gif"
-        android:src="@drawable/loading"
-        android:layout_gravity="center"
-        android:layout_weight="70"/>
+    android:orientation="vertical"
+    android:padding="0dp">
 
     <TextView
-        android:layout_width="match_parent"
+        style="@style/room_name_bar"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Loading something funny :p"
-        android:id="@+id/TV"
-        android:layout_weight="50"
-        android:textColor="#ffff"
-        android:textSize="23sp"
-        android:textStyle="bold"
-        android:layout_gravity="center"
-        android:gravity="center_vertical|center_horizontal" />
+        android:text="Room Name"
+        android:id="@+id/textView7"
+        android:singleLine="true" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingBottom="@dimen/activity_horizontal_margin">
+
+        <pl.droidsonroids.gif.GifImageView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:id="@+id/gif"
+            android:src="@drawable/loading"
+            android:layout_gravity="center"
+            android:layout_weight="70"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Loading something funny :p"
+            android:id="@+id/TV"
+            android:layout_weight="50"
+            android:textColor="#ffff"
+            android:textSize="23sp"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:gravity="center_vertical|center_horizontal" />
+    </LinearLayout>
 </LinearLayout>

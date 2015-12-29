@@ -1,5 +1,6 @@
 package ixdcth.chalmers.edu.fourfun;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
@@ -16,7 +17,7 @@ import ixdcth.chalmers.edu.fourfun.net.Client;
 import ixdcth.chalmers.edu.fourfun.net.packet.Packet20SendQuestion;
 import ixdcth.chalmers.edu.fourfun.net.packet.Packet25EndDiscussion;
 
-public class DiscussionActivity extends AppCompatActivity {
+public class DiscussionActivity extends Activity {
 
     ListView lv;
     TextView questionTv;

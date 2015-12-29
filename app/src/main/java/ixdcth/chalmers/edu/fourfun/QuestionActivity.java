@@ -1,5 +1,6 @@
 package ixdcth.chalmers.edu.fourfun;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
@@ -12,7 +13,7 @@ import ixdcth.chalmers.edu.fourfun.net.Client;
 import ixdcth.chalmers.edu.fourfun.net.packet.Packet13CreateRoom;
 import ixdcth.chalmers.edu.fourfun.net.packet.Packet20SendQuestion;
 
-public class QuestionActivity extends AppCompatActivity {
+public class QuestionActivity extends Activity {
     private EditText ET;
     private Packet20SendQuestion p;
     private Client client;

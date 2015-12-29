@@ -5,6 +5,7 @@ import ixdcth.chalmers.edu.fourfun.net.interfaces.CreateJoinInterface;
 import ixdcth.chalmers.edu.fourfun.net.packet.Packet13CreateRoom;
 import ixdcth.chalmers.edu.fourfun.net.packet.Packet14RoomCreated;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Looper;
@@ -19,7 +20,7 @@ import ixdcth.chalmers.edu.fourfun.net.interfaces.CreateJoinInterface;
 import ixdcth.chalmers.edu.fourfun.net.packet.Packet13CreateRoom;
 import ixdcth.chalmers.edu.fourfun.net.packet.Packet16JoinRoom;
 
-public class CreateJoinRoomActivity extends AppCompatActivity implements CreateJoinInterface {
+public class CreateJoinRoomActivity extends Activity implements CreateJoinInterface {
 
     Client client;
     Connection connection;

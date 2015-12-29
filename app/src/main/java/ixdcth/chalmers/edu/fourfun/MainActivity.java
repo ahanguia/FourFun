@@ -1,5 +1,6 @@
 package ixdcth.chalmers.edu.fourfun;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
@@ -11,7 +12,7 @@ import ixdcth.chalmers.edu.fourfun.net.interfaces.CreateJoinInterface;
 import ixdcth.chalmers.edu.fourfun.net.packet.Packet13CreateRoom;
 import ixdcth.chalmers.edu.fourfun.net.packet.Packet14RoomCreated;
 
-public class MainActivity extends AppCompatActivity{
+public class MainActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

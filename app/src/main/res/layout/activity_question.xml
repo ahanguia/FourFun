@@ -1,35 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:layout_height="match_parent" android:paddingLeft="20dp"
+    android:paddingRight="20dp"
+    android:paddingTop="20dp"
+    android:paddingBottom="20dp"
     tools:context="ixdcth.chalmers.edu.fourfun.Connection.QuestionActivity"
     android:orientation="vertical"
     android:background="@color/orange_bakgrnd">
+
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="You have the power of asking a question ! USE it"
+        android:text="Ask your friends!"
+        android:id="@+id/textView3"
+        android:layout_weight="0.04"
+        android:textSize="32dp"
+        android:textStyle="normal"
         android:textColor="@color/white"
-        android:textSize="@dimen/text_size"
-        android:layout_weight="10" />
+        android:layout_marginTop="40dp" />
+
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/question_ET"
         style="@style/edit_text_begin"
-        android:hint="Your question"
         android:textColor="@color/white"
-        android:layout_weight="30"/>
-    <ImageView
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:src="@drawable/send"
-        android:clickable="true"
-        android:onClick="sendQuestion"
-        android:layout_weight="10"
-        android:layout_gravity="center" />
+        android:layout_weight="0.28"
+        android:autoText="true"
+        android:textAlignment="gravity"
+        android:hint="Question..."
+        android:minHeight="80dp"
+        android:maxLines="10"
+        android:gravity="top|left"
+        android:textSize="24dp"
+        android:paddingTop="10dp"
+        android:paddingLeft="10dp" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="182dp"
+        android:layout_weight="0.21"
+        android:padding="30dp">
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/send2"
+            android:clickable="true"
+            android:onClick="sendQuestion"
+            android:layout_weight="10"
+            android:layout_gravity="center" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="SEND"
+            android:id="@+id/textView4"
+            android:layout_gravity="bottom|center_horizontal"
+            android:textColor="@color/white" />
+    </FrameLayout>
 
 </LinearLayout>

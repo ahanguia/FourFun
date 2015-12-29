@@ -9,7 +9,7 @@
     </style>
     <style name="edit_text_begin">
         <item name="android:background">@drawable/edit_text_style</item>
-        <item name="android:alpha">0.2</item>
+        <item name="android:alpha">1</item>
         <item name="android:paddingLeft">10dp</item>
     </style>
 

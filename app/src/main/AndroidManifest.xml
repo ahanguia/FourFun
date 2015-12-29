@@ -32,6 +32,7 @@
         <activity android:name=".AnswerActivity" >
         </activity>
         <activity android:name=".DiscussionActivity" >
+
         </activity>
     </application>
 

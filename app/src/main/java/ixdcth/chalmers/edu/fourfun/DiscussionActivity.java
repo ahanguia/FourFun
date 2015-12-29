@@ -39,16 +39,20 @@ public class DiscussionActivity extends Activity {
 
     private void showAnswers() {
         ArrayList<String> answers = intent.getStringArrayListExtra("answers");
+        /*ArrayList<String> answers = new ArrayList<String>();
+        answers.add("ANSWER 1");
+        answers.add("ANSWER 2");*/
         for(String s : answers){
             Log.d("DISCACT: ", s);
         }
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, android.R.id.text1, answers);
+                R.layout.itemlistview, R.id.lvItem, answers);
         lv.setAdapter(adapter);
     }
 
     private void showQuestion() {
         questionTv.setText(intent.getStringExtra("question"));
+        //questionTv.setText("Test Question : This Is a big Question that have to be respected !");
     }
 
     public void onClickDone(View v){

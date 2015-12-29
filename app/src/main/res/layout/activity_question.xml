@@ -14,11 +14,10 @@
         android:layout_height="wrap_content"
         android:text="Ask your friends!"
         android:id="@+id/textView3"
-        android:layout_weight="0.04"
         android:textSize="32dp"
         android:textStyle="normal"
         android:textColor="@color/white"
-        android:layout_marginTop="40dp" />
+        android:layout_weight="0.05" />
 
     <EditText
         android:layout_width="match_parent"
@@ -26,7 +25,7 @@
         android:id="@+id/question_ET"
         style="@style/edit_text_begin"
         android:textColor="@color/white"
-        android:layout_weight="0.28"
+        android:layout_weight="0.3"
         android:autoText="true"
         android:textAlignment="gravity"
         android:hint="Question..."
@@ -35,7 +34,9 @@
         android:gravity="top|left"
         android:textSize="24dp"
         android:paddingTop="10dp"
-        android:paddingLeft="10dp" />
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp" />
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -46,7 +47,7 @@
         <ImageView
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@drawable/send2"
+            android:src="@drawable/send3"
             android:clickable="true"
             android:onClick="sendQuestion"
             android:layout_weight="10"

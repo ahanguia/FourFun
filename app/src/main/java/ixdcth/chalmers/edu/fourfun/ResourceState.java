@@ -10,4 +10,5 @@ public  class ResourceState {
     public static String playerName="Player";
     public static String ip="85.228.1.235";
     public static int port=12753;
+    public static String roomName="Room";
 }

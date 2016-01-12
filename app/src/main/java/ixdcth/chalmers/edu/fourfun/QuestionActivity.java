@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import ixdcth.chalmers.edu.fourfun.net.Client;
@@ -18,6 +19,7 @@ public class QuestionActivity extends Activity {
     private Packet20SendQuestion p;
     private Client client;
     private String question;
+    private TextView roomNameTV;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +27,10 @@ public class QuestionActivity extends Activity {
         setContentView(R.layout.activity_question);
         ET = (EditText) findViewById(R.id.question_ET);
         client=Client.getInstance();
+    }
+    private void loadRoomName() {
+        roomNameTV=(TextView) findViewById(R.id.roomName);
+        roomNameTV.setText(ResourceState.roomName);
     }
 
     public void sendQuestion(View v){

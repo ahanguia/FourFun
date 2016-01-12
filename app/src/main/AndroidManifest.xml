@@ -12,28 +12,38 @@
         android:supportsRtl="true"
         android:theme="@android:style/Theme.Holo.Light.NoActionBar"
          >
-        <activity android:name=".MainActivity" >
+        <activity android:name=".MainActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan"
+            />
+        <activity android:name=".WaitingActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan"
+            />
 
-        </activity>
-        <activity android:name=".WaitingActivity" >
-
-        </activity>
-        <activity android:name=".CreateJoinRoomActivity" >
+        <activity android:name=".CreateJoinRoomActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Connection$QuestionActivity" >
-        </activity>
-        <activity android:name=".QuestionActivity" >
-        </activity>
-        <activity android:name=".AnswerActivity" >
-        </activity>
-        <activity android:name=".DiscussionActivity" >
 
-        </activity>
+        <activity android:name=".QuestionActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan"
+            />
+        <activity android:name=".AnswerActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan"
+            />
+        <activity android:name=".DiscussionActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan"
+            />
     </application>
 
 </manifest>

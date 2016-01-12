@@ -39,9 +39,6 @@ public class DiscussionActivity extends Activity {
 
     private void showAnswers() {
         ArrayList<String> answers = intent.getStringArrayListExtra("answers");
-        /*ArrayList<String> answers = new ArrayList<String>();
-        answers.add("ANSWER 1");
-        answers.add("ANSWER 2");*/
         for(String s : answers){
             Log.d("DISCACT: ", s);
         }

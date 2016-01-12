@@ -13,6 +13,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import ixdcth.chalmers.edu.fourfun.net.Client;
@@ -80,10 +82,15 @@ public class CreateJoinRoomActivity extends Activity implements CreateJoinInterf
 
     public void createRoom(View v) {
         Log.i("ADAM", "Room Created");
+
+        EditText ETroomName=(EditText) findViewById(R.id.roomNameET);
+        ResourceState.roomName=ETroomName.getText().toString();
         new CreateAsync().execute();
     }
     public void joinRoom(View v) {
-        Log.i("ADAM","Room Joined");
+        Log.i("ADAM", "Room Joined");
+        EditText ETroomName=(EditText) findViewById(R.id.roomNameET);
+        ResourceState.roomName=ETroomName.getText().toString();
         new JoinAsync().execute();
     }
 

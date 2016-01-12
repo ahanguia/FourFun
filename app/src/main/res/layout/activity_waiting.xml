@@ -15,7 +15,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="Room Name"
-        android:id="@+id/textView7"
+        android:id="@+id/roomName"
         android:singleLine="true" />
 
     <LinearLayout

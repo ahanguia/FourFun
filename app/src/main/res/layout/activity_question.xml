@@ -14,7 +14,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="Room Name"
-        android:id="@+id/room_name"
+        android:id="@+id/roomName"
         style="@style/room_name_bar"
         android:singleLine="true" />
 

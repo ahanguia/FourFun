@@ -8,6 +8,8 @@ import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -22,10 +24,12 @@ public class WaitingActivity extends Activity implements WaitingInterface {
     String color;
     ArrayList<String> quotes=new ArrayList<String>();
     TextView quoteTV;
+    TextView roomNameTV;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_waiting);
+        loadRoomName();
         loadQuote();
 
         client=Client.getInstance();
@@ -34,6 +38,11 @@ public class WaitingActivity extends Activity implements WaitingInterface {
         color=i.getStringExtra("color");
         Toast toast = Toast.makeText(this, color, Toast.LENGTH_LONG);
         toast.show();
+    }
+
+    private void loadRoomName() {
+        roomNameTV=(TextView) findViewById(R.id.roomName);
+        roomNameTV.setText(ResourceState.roomName);
     }
 
     private void loadQuote() {

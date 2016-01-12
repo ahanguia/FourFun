@@ -31,7 +31,7 @@ public class AnswerActivity extends Activity {
     }
 
     private void loadQuestion() {
-        Intent intent =new Intent();
+        Intent intent =getIntent();
         String question=intent.getStringExtra("question");
         TextView questionTV=(TextView) findViewById(R.id.questionTV);
         questionTV.setText(question);

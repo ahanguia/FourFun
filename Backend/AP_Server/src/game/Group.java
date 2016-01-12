@@ -13,7 +13,7 @@ import net.packet.Packet24StartDiscussion;
 
 public class Group {
 
-	private final int roomSize = 3;
+	private final int roomSize = 4;
 	
 	private String name;
 	

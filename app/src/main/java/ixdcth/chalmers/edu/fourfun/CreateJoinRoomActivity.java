@@ -110,7 +110,7 @@ public class CreateJoinRoomActivity extends Activity implements CreateJoinInterf
         @Override
         protected Void doInBackground(Void... arg0) {
 
-            Packet13CreateRoom packet13CreateRoom = new Packet13CreateRoom("My Room");
+            Packet13CreateRoom packet13CreateRoom = new Packet13CreateRoom(ResourceState.roomName);
             client.sendData(packet13CreateRoom.getData());
             return null;
         }
@@ -136,7 +136,7 @@ public class CreateJoinRoomActivity extends Activity implements CreateJoinInterf
 
         @Override
         protected Void doInBackground(Void... arg0) {
-            Packet16JoinRoom packet16JoinRoom = new Packet16JoinRoom("My Room");
+            Packet16JoinRoom packet16JoinRoom = new Packet16JoinRoom(ResourceState.roomName);
             client.sendData(packet16JoinRoom.getData());
             return null;
         }

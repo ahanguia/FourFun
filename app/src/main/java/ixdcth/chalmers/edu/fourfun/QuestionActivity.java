@@ -25,12 +25,13 @@ public class QuestionActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question);
+        loadRoomName();
         ET = (EditText) findViewById(R.id.question_ET);
         client=Client.getInstance();
     }
     private void loadRoomName() {
         roomNameTV=(TextView) findViewById(R.id.roomName);
-        roomNameTV.setText(ResourceState.roomName);
+        roomNameTV.setText("Room Name :" + ResourceState.roomName);
     }
 
     public void sendQuestion(View v){

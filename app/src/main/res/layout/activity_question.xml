@@ -42,7 +42,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/question_ET"
             style="@style/edit_text_begin"
-            android:textColor="@color/white"
+            android:textColor="#808080"
             android:layout_weight="0.3"
             android:autoText="true"
             android:textAlignment="gravity"
@@ -76,6 +76,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="SEND"
+                android:textSize="15sp"
                 android:id="@+id/textView4"
                 android:layout_gravity="bottom|center_horizontal"
                 android:textColor="@color/white" />

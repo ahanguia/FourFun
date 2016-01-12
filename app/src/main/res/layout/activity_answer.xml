@@ -15,7 +15,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="Room Name"
-        android:id="@+id/textView6"
+        android:id="@+id/roomName"
         android:singleLine="true" />
 
     <LinearLayout
@@ -44,7 +44,7 @@
             android:id="@+id/answer_ET"
             style="@style/edit_text_begin"
             android:hint="Your answer..."
-            android:textColor="@color/white"
+            android:textColor="#808080"
             android:layout_weight="3.75"
             android:gravity="top|left"
             android:maxLines="10"
@@ -76,6 +76,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="SEND"
+                android:textSize="15sp"
                 android:id="@+id/textView5"
                 android:layout_gravity="bottom|center_horizontal"
                 android:textColor="@color/white" />

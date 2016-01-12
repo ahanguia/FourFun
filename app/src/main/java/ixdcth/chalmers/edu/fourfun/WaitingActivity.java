@@ -21,7 +21,6 @@ import ixdcth.chalmers.edu.fourfun.net.interfaces.WaitingInterface;
 public class WaitingActivity extends Activity implements WaitingInterface {
 
     private Client client ;
-    String color;
     ArrayList<String> quotes=new ArrayList<String>();
     TextView quoteTV;
     TextView roomNameTV;
@@ -34,15 +33,11 @@ public class WaitingActivity extends Activity implements WaitingInterface {
 
         client=Client.getInstance();
         client.setWaitingInterface(this);
-        Intent i=getIntent();
-        color=i.getStringExtra("color");
-        Toast toast = Toast.makeText(this, color, Toast.LENGTH_LONG);
-        toast.show();
     }
 
     private void loadRoomName() {
         roomNameTV=(TextView) findViewById(R.id.roomName);
-        roomNameTV.setText(ResourceState.roomName);
+        roomNameTV.setText("Room Name :" + ResourceState.roomName);
     }
 
     private void loadQuote() {

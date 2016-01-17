@@ -47,3 +47,12 @@ Receiving:
   4. For example, package identifier 24 means the package is converted into a Package24StartDiscussion object. this class's constructor converts the bytestream into usable variables. 
   5. The Package24StartDiscussion object is sent to the handleStartDiscussion method, where the appropriate actions are being executed.
   6. If the received package is supposed to result in an immediate response, such a response is sent. An example of an immediate response is, on the server, when a room name is already taken, or if a room is full.
+
+###Typical cases
+There are two typical cases for how communication works
+
+The first case is when a user performs a task in the mobile application. A packet is then sent to the server. When the server has received the packet, it responds to the client with either a confirmation or error message. In most cases, the confirmation from the server puts the client in the waiting activity.
+
+The second case is when the server broadcasts packets to ALL clients at once. This is the case whenever a new phase takes place. For example, when the answer phase is beginning, the server broadcasts a boolean to all clients which determines whether a client should wait or write an answer.
+
+As we can see, the client only switches activities when prompted to do so by the server. Hence, you could say that the server controls the state of the mobile application externally.
